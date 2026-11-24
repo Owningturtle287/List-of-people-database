@@ -1,7 +1,7 @@
 /* Deterministic, fictional simulation. No real-time clock. */
 (function(root){
-const ZONES={"Landing beach":[46.4,83.9],"Shaded treeline":[46.5,82.4],"Muster area":[47.7,83.2],"First aid area":[48.8,82.6],"Wreck access":[44.4,85],"Supply staging":[45.5,83.2],"Interior clearing":[51,53],"North ridge":[49,26],"East cove":[80,49],"West beach":[23,48]};
-const SPREAD={"Landing beach":[0.95,0.33],"Shaded treeline":[0.8,0.35],"Muster area":[0.7,0.35],"First aid area":[0.28,0.22],"Wreck access":[0.55,0.26],"Supply staging":[0.26,0.18],"Interior clearing":[1,0.7],"North ridge":[1,0.6],"East cove":[0.8,0.6],"West beach":[0.8,0.6]};
+const ZONES={"Landing beach":[46.4,83.9],"Shaded treeline":[46.5,82.4],"Muster area":[47.7,83.2],"First aid area":[48.8,82.6],"Wreck access":[44.4,84.04],"Supply staging":[45.5,83.2],"Interior clearing":[51,53],"North ridge":[49,26],"East cove":[80,49],"West beach":[23,48]};
+const SPREAD={"Landing beach":[0.95,0.33],"Shaded treeline":[0.8,0.35],"Muster area":[0.7,0.35],"First aid area":[0.28,0.22],"Wreck access":[0.48,0.14],"Supply staging":[0.26,0.18],"Interior clearing":[1,0.7],"North ridge":[1,0.6],"East cove":[0.8,0.6],"West beach":[0.8,0.6]};
 const MAP_METRES=5000;
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const clone=x=>JSON.parse(JSON.stringify(x));
