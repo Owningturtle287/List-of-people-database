@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 2,
+  "revision": 3,
   "minute": 433,
   "weather": "Not established",
   "events": [
@@ -19,6 +19,10 @@
     {
       "at": 433,
       "action": "Opening map refined to a 5 km reference grid; families and nearby survivors positioned within a compact south-shore landing area. No story time elapsed."
+    },
+    {
+      "at": 433,
+      "action": "Controller-only map update: the Obelisk and northern freshwater spring exist but remain undiscovered. No story time elapsed."
     }
   ],
   "people": [
@@ -14925,6 +14929,32 @@
   "map": {
     "metres": 5000,
     "layout": "South landing, detailed topographic schematic v2",
-    "note": "Opening positions spatially refined; wreck access is on the shore beside the grounded ship. No story time elapsed."
+    "note": "Opening positions spatially refined; wreck access is on the shore beside the grounded ship. No story time elapsed.",
+    "pointsOfInterest": [
+      {
+        "id": "obelisk",
+        "name": "The Obelisk",
+        "type": "mysterious device",
+        "x": 50.2,
+        "y": 51.4,
+        "discoveredBySurvivors": false,
+        "description": "A tall, black, mysterious obelisk in the interior of the island.",
+        "controllerKnowledge": "Contains an AI tasked with helping the survivors stay alive. It knows everything about the island. Its speech and actions are directed only by the story controller.",
+        "state": "Undiscovered; no communication or action established.",
+        "discoveredAt": null
+      },
+      {
+        "id": "north_spring",
+        "name": "Fresh Water Spring",
+        "type": "freshwater source",
+        "x": 49.1,
+        "y": 17.6,
+        "discoveredBySurvivors": false,
+        "description": "A natural freshwater spring near the northern side of the island.",
+        "controllerKnowledge": "Freshwater source; the survivors do not know of it. Flow, capacity and potability have not been established.",
+        "state": "Undiscovered; no use by survivors.",
+        "discoveredAt": null
+      }
+    ]
   }
 }
