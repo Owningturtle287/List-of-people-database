@@ -1,0 +1,50 @@
+name: Build and publish island register
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: island-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate database and simulation
+        run: |
+          node --check engine.js
+          node test.js
+          node -e "const fs=require('fs'); const h=fs.readFileSync('index.html','utf8'); for(const m of h.matchAll(/<script>([\\s\\S]*?)<\\/script>/g)) new Function(m[1]);"
+      - name: Package site
+        run: |
+          mkdir -p site
+          cp index.html engine.js world.json manifest.webmanifest icon.svg sw.js site/
+          touch site/.nojekyll
+      - name: Downloadable web app
+        uses: actions/upload-artifact@v4
+        with:
+          name: stranded-iphone-web-app
+          path: site/
+          retention-days: 30
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
