@@ -18,6 +18,7 @@ jobs:
           node-version: '22'
       - name: Validate database and simulation
         run: |
+          node assemble-world.js
           node --check engine.js
           node test.js
           node -e "const fs=require('fs'); const h=fs.readFileSync('index.html','utf8'); for(const m of h.matchAll(/<script>([\\s\\S]*?)<\\/script>/g)) new Function(m[1]);"
